@@ -319,7 +319,7 @@ class Calendar
             return (($year % 4 == 0) && ($year % 100 != 0) || ($year % 400 == 0)) ? 29 : 28;
         }
 
-        return $this->solarMonth[$ms];
+        return $this->solarMonths[$ms];
     }
 
     /**
@@ -610,11 +610,11 @@ class Calendar
             return -1;
         }
 
-        $maxDays = $days = $this->lunarDays($year, $month);
+       $maxDays = $days = $this->solarDays($year, $month);
 
         // if month is leap, _day use leapDays method
         if ($isLeapMonth) {
-            $maxDays = $this->leapDays($year, $month);
+            $maxDays = $this->leapDays($year);
         }
 
         // 参数合法性效验
